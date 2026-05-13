@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator Without Buttons</title>
+<style>
+*{
+    background-color: burlywood;
+    margin: 0;
+    padding: 0;
+}
+#container{
+    width: 400px;
+    height: 250px;
+    margin: auto;
+    background-color: black;
+    margin-top: 100px;
+    border: 2px solid burlywood;
+    border-radius: 10px;
+}
+
+
+h2{
+    background-color: black;
+    color: burlywood;
+    text-align: center;
+    padding: 50px;
+}
+#input{
+    display:inline-block;
+    width: 250px;
+   text-align:left;
+   margin-top: 60px;
+   margin-bottom: 30px;
+   margin-left: 70px; 
+   margin-right: 90px;
+   height: 30px;
+}
+button{
+    width: 100px;
+    height: 30px;
+    margin-left: 150px;
+    margin-bottom: 20px;
+}
+#result{
+    display: block;
+   text-align: center;
+    color: burlywood;
+    background-color: black;
+}
+</style>
+</head>
+<body>
+
+  <h2>Calculator Without Buttons</h2>
+<div id="container">
+  <input type="text" id="input" placeholder="Example: 5+9">
+  <button onclick="calculate()">Calculate</button>
+
+  <p id="result"></p>
+</div>
+  <script >
+    function calculate(){
+        let input =document.getElementById("input").value
+        let result;
+    // Find operator
+  let operator;
+  if (input.includes("+")) operator = "+";
+  else if (input.includes("-")) operator = "-";
+  else if (input.includes("")) operator = "";
+  else if (input.includes("/")) operator = "/";
+  else {
+    document.getElementById("result").innerText = "Invalid operator";
+    return;
+  }
+
+  // Split operands
+  let parts = input.split(operator);
+  let operand1 = Number(parts[0]);
+  let operand2 = Number(parts[1]);
+
+  // Switch case
+  switch (operator) {
+    case "+":
+      result = operand1 + operand2;
+      break;
+    case "-":
+      result = operand1 - operand2;
+      break;
+    case "*":
+      result = operand1 * operand2;
+      break;
+    case "/":
+      result = operand1 / operand2;
+      break;
+    default:
+      result = "Error";
+  }
+    
+  document.getElementById("result").innerText = "Result: " + result;
+    }
+  </script>
+</body>
+</html>
